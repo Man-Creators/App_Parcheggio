@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorAccent">@color/viola_web</item>
+        <item name="android:colorPrimary">@color/antracite</item>
+        <item name="android:colorPrimaryDark">@color/antracite</item>
+        <item name="android:statusBarColor">@color/antracite</item>
+        <item name="android:navigationBarColor">@color/antracite</item>
+        <item name="android:windowBackground">@color/antracite</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Scheda del widget: finestra trasparente sopra la home -->
+    <style name="SaveTheme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:colorAccent">@color/viola_web</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Toast</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

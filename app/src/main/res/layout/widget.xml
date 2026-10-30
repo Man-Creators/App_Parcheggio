@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <!-- Ultimo parcheggio: tocca per aprire la mappa -->
+    <LinearLayout
+        android:id="@+id/w_info"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="8dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_pin"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/w_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.08"
+                android:text="AUTO PARCHEGGIATA"
+                android:textColor="@color/bianco_70"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/w_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:text="Nessun parcheggio salvato"
+                android:textColor="@color/bianco"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/w_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/verde"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Pulsante SALVA -->
+    <TextView
+        android:id="@+id/w_save"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:minWidth="86dp"
+        android:maxHeight="64dp"
+        android:background="@drawable/btn_viola"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:letterSpacing="0.1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="SALVA"
+        android:textColor="@color/bianco"
+        android:textSize="15sp" />
+</LinearLayout>

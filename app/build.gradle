@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
+def buildNumber = Integer.parseInt(System.getenv("VERSION_CODE") ?: "1")
+
+android {
+    namespace 'it.mancreators.parcheggio'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'it.mancreators.parcheggio'
+        minSdk 26
+        targetSdk 34
+        versionCode buildNumber
+        versionName "1.0." + buildNumber
+    }
+
+    // Chiave di firma fissa: così gli aggiornamenti si installano sopra
+    // la versione precedente senza perdere i parcheggi salvati.
+    signingConfigs {
+        release {
+            storeFile file('parcheggio.keystore')
+            storePassword 'parcheggio2026'
+            keyAlias 'parcheggio'
+            keyPassword 'parcheggio2026'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

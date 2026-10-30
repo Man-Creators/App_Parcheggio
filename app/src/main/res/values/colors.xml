@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Colori dal design system "Man" -->
+<resources>
+    <color name="antracite">#242424</color>
+    <color name="antracite_chiaro">#2F2F2F</color>
+    <color name="viola_web">#8A2CFF</color>
+    <color name="bianco">#FFFFFF</color>
+    <color name="bianco_70">#B3FFFFFF</color>
+    <color name="verde">#90FF00</color>
+</resources>

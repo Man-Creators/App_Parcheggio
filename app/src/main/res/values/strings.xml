@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dov\'è l\'auto</string>
+    <string name="widget_name">Parcheggio</string>
+    <string name="widget_description">Salva il parcheggio con un tocco e vedi dove hai lasciato l\'auto</string>
+    <string name="shortcut_save">Salva parcheggio</string>
+    <string name="shortcut_find">Dov\'è l\'auto</string>
+</resources>

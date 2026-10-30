@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#242424">
+  <title>Dov'è l'auto</title>
+  <link rel="stylesheet" href="lib/leaflet.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="map" aria-label="Mappa"></div>
+
+  <header class="top">
+    <h1 class="title">Dov'è l'auto</h1>
+    <button class="icon-btn" id="btnHistory" aria-label="Storico parcheggi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3a9 9 0 0 0-9 9H1l3.9 3.9.1.1L9 12H6a7 7 0 1 1 2.05 4.95l-1.42 1.42A9 9 0 1 0 13 3zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8H12z"/></svg>
+    </button>
+  </header>
+
+  <div class="map-tools">
+    <button class="icon-btn" id="btnMe" aria-label="La mia posizione">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8.94 3A9 9 0 0 0 13 3.06V1h-2v2.06A9 9 0 0 0 3.06 11H1v2h2.06A9 9 0 0 0 11 20.94V23h2v-2.06A9 9 0 0 0 20.94 13H23v-2h-2.06zM12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></svg>
+    </button>
+    <button class="icon-btn" id="btnCar" aria-label="Centra sull'auto">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 6a1.5 1.5 0 0 0-1.4-1h-11a1.5 1.5 0 0 0-1.4 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8l-2.1-6zM6.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm11 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+    </button>
+  </div>
+
+  <section class="sheet" id="sheet">
+    <div class="grab"></div>
+
+    <!-- Nessun parcheggio -->
+    <div id="emptyState" class="empty" hidden>
+      <p class="eyebrow">Benvenuto</p>
+      <h2 class="place">Nessun parcheggio salvato</h2>
+      <p class="muted">Quando lasci l'auto premi <strong>Salva posizione</strong>, oppure usa il widget sulla home.</p>
+    </div>
+
+    <!-- Parcheggio mostrato -->
+    <div id="spotState" hidden>
+      <p class="eyebrow" id="spotEyebrow">Ultimo parcheggio</p>
+      <h2 class="place" id="spotPlace">—</h2>
+      <p class="meta">
+        <span class="accent" id="spotAgo"></span>
+        <span class="dot">·</span>
+        <span id="spotWhen"></span>
+        <span class="dot" id="distDot" hidden>·</span>
+        <span id="spotDist"></span>
+      </p>
+      <label class="note">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        <input id="noteInput" type="text" maxlength="80" placeholder="Nota: piano, colonna, via…" autocomplete="off">
+      </label>
+      <div class="row">
+        <button class="btn primary" id="btnGo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.9 7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 13v-2a5 5 0 0 1-4.3-2.4l-1-1.6a2.1 2.1 0 0 0-1.7-1c-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>
+          Portami all'auto
+        </button>
+        <button class="btn square" id="btnShare" aria-label="Condividi">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 1 0 15 5c0 .24.04.47.09.7L8.04 9.81A3 3 0 1 0 8.04 14.2l7.12 4.16c-.05.21-.08.43-.08.65A2.92 2.92 0 1 0 18 16.08z"/></svg>
+        </button>
+      </div>
+      <button class="link" id="btnFix">Correggi posizione sulla mappa</button>
+    </div>
+
+    <button class="btn save" id="btnSave">
+      <span class="spinner" aria-hidden="true"></span>
+      <span class="save-label">Salva posizione</span>
+    </button>
+  </section>
+
+  <!-- Storico -->
+  <section class="history" id="history" aria-hidden="true">
+    <header class="history-head">
+      <h2 class="title small">Storico</h2>
+      <button class="icon-btn" id="btnCloseHistory" aria-label="Chiudi">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+    </header>
+    <ul class="list" id="historyList"></ul>
+    <p class="muted center" id="historyEmpty" hidden>Ancora nessun parcheggio salvato.</p>
+  </section>
+
+  <div class="fix-bar" id="fixBar" hidden>
+    <span>Trascina il segnaposto nel punto giusto</span>
+    <button class="btn small primary" id="btnFixDone">Fatto</button>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="lib/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tenendo premuta l'icona dell'app compaiono queste due scorciatoie -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="salva"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_save"
+        android:shortcutShortLabel="@string/shortcut_save">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="it.mancreators.parcheggio"
+            android:targetClass="it.mancreators.parcheggio.SaveActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="trova"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_find"
+        android:shortcutShortLabel="@string/shortcut_find">
+        <intent
+            android:action="it.mancreators.parcheggio.SHOW_LATEST"
+            android:targetPackage="it.mancreators.parcheggio"
+            android:targetClass="it.mancreators.parcheggio.MainActivity" />
+    </shortcut>
+</shortcuts>

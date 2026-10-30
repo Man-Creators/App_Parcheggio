@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Segnaposto viola con la P di parcheggio -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#8A2CFF"
+        android:pathData="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7,-7.75 7,-13c0,-3.87 -3.13,-7 -7,-7z" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M10,5.5h2.6c1.6,0 2.7,1 2.7,2.45s-1.1,2.45 -2.7,2.45h-1.1v2.6h-1.5zM11.5,6.85v2.2h1.05c0.75,0 1.2,-0.42 1.2,-1.1s-0.45,-1.1 -1.2,-1.1z" />
+</vector>
